@@ -1,5 +1,5 @@
 ### React Native Simple Saga App
-#### Fetch and Display Random User from https://randomuser.me/api/
+Fetch and Display Random User from https://randomuser.me/api/
 #### Demo
 ![simple-saga-app-demo](https://github.com/damarendra/react-native-simple-saga-app/blob/master/simple-saga-app/assets/demo/SimpleSagaApp.gif)
 #### Built With
