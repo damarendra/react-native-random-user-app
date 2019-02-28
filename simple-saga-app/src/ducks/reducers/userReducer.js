@@ -69,7 +69,7 @@ const reducer = handleActions(
               lastName: action.payload.user.name.last,
               gender: action.payload.user.gender,
               age: action.payload.user.dob.age,
-              pic: ''
+              pic: action.payload.user.picture.large
             },
             location: {
               street: action.payload.user.location.street,

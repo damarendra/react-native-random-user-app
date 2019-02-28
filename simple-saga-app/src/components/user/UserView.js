@@ -5,7 +5,8 @@ import {
 } from 'react-native';
 import {
   Input,
-  Button
+  Button,
+  Avatar
 } from 'react-native-elements';
 import PropTypes from 'prop-types';
 
@@ -23,6 +24,23 @@ const styles = () => StyleSheet.create({
     marginVertical: 3
   }
 });
+
+const getAvatar = (profile) => {
+  if(profile && profile.pic) {
+    return {
+      source: {
+        uri: profile.pic
+      }
+    };
+  } else {
+    return {
+      icon: {
+        name: 'user',
+        type: 'font-awesome'
+      }
+    };
+  }
+};
 
 /* eslint-disable react/jsx-no-bind */
 
@@ -43,6 +61,13 @@ function UserView({
         onPress={()=>fetchRandomUser()}
         loading={isLoading}
       />
+
+      <Avatar
+        rounded
+        size="large"
+        containerStyle={{ marginTop: 15 }}
+        {...getAvatar(profile)}
+      />
       <Input
         label="Name"
         editable={false}
@@ -50,7 +75,7 @@ function UserView({
         inputStyle={styles().inputStyle}
       />
       <Input
-        label="Gender/Age"
+        label="Gender"
         editable={false}
         value={`${profile.gender}`}
         inputStyle={styles().inputStyle}
@@ -58,7 +83,7 @@ function UserView({
       <Input
         label="Address"
         editable={false}
-        value={`${location.street} ${location.city} ${location.state} ${location.postcode}`}
+        value={`${location.street} ${location.city}`}
         inputStyle={styles().inputStyle}
       />
       <Input
