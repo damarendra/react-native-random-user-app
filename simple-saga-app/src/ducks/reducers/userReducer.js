@@ -8,21 +8,21 @@ import {
 export const initialState = {
   user: {
     profile: {
-      firstName: 'Damar',
-      lastName: 'Nugroho',
-      gender: 'Male',
-      age: 30,
+      firstName: '',
+      lastName: '',
+      gender: '',
+      age: 0,
       pic: ''
     },
     location: {
-      street: 'Gubeng Kertajaya 6C/18',
-      city: 'Surabaya',
-      state: 'Jawa Timur',
-      postcode: '60112'
+      street: '',
+      city: '',
+      state: '',
+      postcode: ''
     },
     contacts: {
-      phone: '082121668865',
-      email: 'damarendran@gmail.com'
+      phone: '',
+      email: ''
     }
   },
   loading: false
@@ -41,7 +41,10 @@ export const fetch_random_user = createAction(
 );
 export const fetch_random_user_success = createAction(
   action_types.FETCH_RANDOM_USER_SUCCESS,
-  (result) => (result)
+  (user) => ({user})
+);
+export const fetch_random_user_failed = createAction(
+  action_types.FETCH_RANDOM_USER_FAILED
 );
 
 // Reducer
@@ -56,13 +59,56 @@ const reducer = handleActions(
     ],
     [
       fetch_random_user_success, // set new state
+      (state, action) => {
+
+        const newState = {
+          ...state,
+          user: {
+            profile: {
+              firstName: action.payload.user.name.first,
+              lastName: action.payload.user.name.last,
+              gender: action.payload.user.gender,
+              age: action.payload.user.dob.age,
+              pic: ''
+            },
+            location: {
+              street: action.payload.user.location.street,
+              city: action.payload.user.location.city,
+              state: action.payload.user.location.state,
+              postcode: action.payload.user.location.postcode
+            },
+            contacts: {
+              phone: action.payload.user.phone,
+              email: action.payload.user.email
+            }
+          },
+          loading: false
+        };
+
+        return newState;
+      }
+    ],
+    [
+      fetch_random_user_failed, // clear state
       (state) => ({
         ...state,
         user: {
-          ...state.user,
           profile: {
-            ...state.user.profile,
-            firstName: 'Damarendra OMEN!'
+            firstName: '',
+            lastName: '',
+            gender: '',
+            age: 0,
+            pic: ''
+          },
+          location: {
+            street: '',
+            city: '',
+            state: '',
+            postcode: ''
+          },
+          contacts: {
+            phone: '',
+            email: ''
           }
         },
         loading: false

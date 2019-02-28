@@ -52,13 +52,13 @@ function UserView({
       <Input
         label="Gender/Age"
         editable={false}
-        value={`${profile.gender}/${profile.age}`}
+        value={`${profile.gender}`}
         inputStyle={styles().inputStyle}
       />
       <Input
         label="Address"
         editable={false}
-        value={`${location.street} ${location.city}, ${location.state} ${location.postcode}`}
+        value={`${location.street} ${location.city} ${location.state} ${location.postcode}`}
         inputStyle={styles().inputStyle}
       />
       <Input
