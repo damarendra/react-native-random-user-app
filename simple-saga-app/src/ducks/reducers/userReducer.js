@@ -24,7 +24,8 @@ export const initialState = {
       phone: '082121668865',
       email: 'damarendran@gmail.com'
     }
-  }
+  },
+  loading: false
 };
 
 // Action Types
@@ -49,7 +50,8 @@ const reducer = handleActions(
     [
       fetch_random_user, // clear state
       (state) => ({
-        ...state
+        ...state,
+        loading: true
       })
     ],
     [
@@ -60,9 +62,10 @@ const reducer = handleActions(
           ...state.user,
           profile: {
             ...state.user.profile,
-            firstName: 'Damarendra'
+            firstName: 'Damarendra OMEN!'
           }
-        }
+        },
+        loading: false
       })
     ]
   ]),

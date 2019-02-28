@@ -5,8 +5,9 @@ import {
 } from 'redux-saga/effects';
 
 import {
-  fetch_random_user,
-  fetch_random_user_success
+  // fetch_random_user,
+  fetch_random_user_success,
+  action_types
 } from './../reducers/userReducer';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
@@ -18,6 +19,6 @@ export function *fetchRandomUser() {
 }
 
 // Watcher Saga : spawn fetchRandomUser task on each fetch_random_user
-export default function *watchFetchRandomUser() {
-  yield takeLeading(fetch_random_user(), fetchRandomUser);
+export function *watchFetchRandomUser() {
+  yield takeLeading(action_types.FETCH_RANDOM_USER, fetchRandomUser);
 }

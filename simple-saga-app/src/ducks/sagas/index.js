@@ -1,14 +1,14 @@
 
 import {
   all
-} from 'redux-saga';
+} from 'redux-saga/effects';
 
 import {
-  default as user
+  watchFetchRandomUser
 } from './userSaga';
 
 export default function *rootSaga() {
   yield all([
-    user()
+    watchFetchRandomUser()
   ]);
 }

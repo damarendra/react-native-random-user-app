@@ -1,16 +1,23 @@
 
 import React from 'react';
 import {
-    View,
-    Text
-} from 'react-native';
+  createAppContainer
+} from 'react-navigation';
+import {
+  Provider
+} from 'react-redux';
 
-export const component = () => {
-    return(
-        <View>
-            <Text>
-                Hello
-            </Text>
-        </View>
-    );
+import { default as store } from './src/ducks/store';
+import { default as AppNavigator } from './src/navigations/AppNavigator';
+
+const AppContainer = createAppContainer(AppNavigator);
+
+const SimpleSagaApp = () => {
+  return (
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  );
 };
+
+export default SimpleSagaApp;
