@@ -7,8 +7,16 @@
     "test": "jest"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "16.6.3",
-    "react-native": "0.58.5"
+    "react-native": "0.58.5",
+    "react-native-gesture-handler": "^1.0.16",
+    "react-navigation": "^3.3.2",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
+    "redux-saga": "^1.0.2",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
@@ -19,7 +27,8 @@
     "eslint-plugin-react-native": "^3.6.0",
     "jest": "24.1.0",
     "metro-react-native-babel-preset": "0.52.0",
-    "react-test-renderer": "16.6.3"
+    "react-test-renderer": "16.6.3",
+    "redux-logger": "^3.0.6"
   },
   "jest": {
     "preset": "react-native"
